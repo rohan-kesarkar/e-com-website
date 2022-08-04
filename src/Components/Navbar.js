@@ -75,11 +75,11 @@ const selectProduct = (e)=>{
             props.item.map((res)=>{
                 return(
             <option key={res.id}>
-                {res.category}
+               {res.category}
                 </option>
                 )
             
-            })
+            }).filter((prod,index,arr)=>arr.indexOf(prod)===index)
         }
         
       </Form.Select>

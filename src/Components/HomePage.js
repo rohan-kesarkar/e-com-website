@@ -4,8 +4,11 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Navbar from './Navbar';
+import {useNavigate} from "react-router-dom"
+
 
 const HomePage = () => {
+    const navigate = useNavigate()
     const [item, setItem] = useState([])
     
     const getProduct = async ()=>{
@@ -15,6 +18,7 @@ const HomePage = () => {
    useEffect(()=>{
     getProduct()
    },[])
+   
   return (
     <>
      <Navbar item={item} setItem={setItem}/>
@@ -31,7 +35,8 @@ const HomePage = () => {
               <Card.Text>
                Rating: {elem.rating.rate}
               </Card.Text>
-              <Button variant="light">More Details</Button>
+              <Button variant="light"  onClick={()=>navigate(`/product/${elem.id}`)}>More Details</Button>
+              <Button variant="primary" style={{float:"right"}} >Add to Cart</Button>
             </Card.Body>
           </Card>
         </Col>
