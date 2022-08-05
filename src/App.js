@@ -12,7 +12,7 @@ function App() {
      <Router>
       <Routes>
         <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/product/:id" element={<ProductDetails/>} />
+        <Route exact path="/product/:productId" element={<ProductDetails  />} />
       </Routes>
      </Router>
       

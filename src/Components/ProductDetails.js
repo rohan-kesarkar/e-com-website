@@ -1,45 +1,47 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import { useParams } from 'react-router-dom'
+import axios from 'axios'
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+const baseURL="https://fakestoreapi.com/products"
 
 const ProductDetails = () => {
-    const prodId = useParams()
+  const {productId}= useParams()
+    // const prodId = useParams()
+   
+    console.log("This is our productId",productId)
 
-    const [item, setItem] = useState([])
-    
-    const getProduct = async ()=>{
-        const responce = await fetch("https://fakestoreapi.com/products")
-        setItem(await responce.json())
-    }
-   useEffect(()=>{
-    getProduct()
-   },[])
-    console.log("This is ", item)
+  const [post, setPost] = React.useState([]);
 
-    const currentProduct = item.find(record=>record.id === parseInt(prodId.id))
+  useEffect(() => {
+    axios.get(baseURL+'/'+productId).then((response) => {
+      setPost(response.data);
+    });
+  },[productId]);
+
+
+  
 
 
   return (
     <>
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={currentProduct.image} />
+    {/* <h1>title : {title}</h1> */}
+    <Card  style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={post?.image} />
       <Card.Body>
-        <Card.Title>{currentProduct.title}</Card.Title>
+        <Card.Title>{post?.title}</Card.Title>
         <Card.Text>
-        {currentProduct.deccription}
+        {post.description}
         </Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush">
-        <ListGroup.Item>Cras justo odio</ListGroup.Item>
-        <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-        <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+        <ListGroup.Item>Price: ${post?.price}</ListGroup.Item>
+        <ListGroup.Item>Category: {post?.category}</ListGroup.Item>
+        <ListGroup.Item>rating: {post?.rating?.rate}</ListGroup.Item>
       </ListGroup>
-      <Card.Body>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
-      </Card.Body>
+     
     </Card>
+ 
     </>
   )
 }

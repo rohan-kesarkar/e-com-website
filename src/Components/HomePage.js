@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Navbar from './Navbar';
 import {useNavigate} from "react-router-dom"
+// import ProductDetails from './ProductDetails';
 
 
 const HomePage = () => {
@@ -18,7 +19,7 @@ const HomePage = () => {
    useEffect(()=>{
     getProduct()
    },[])
-   
+   console.log("This side is homepage", item)
   return (
     <>
      <Navbar item={item} setItem={setItem}/>
@@ -42,6 +43,7 @@ const HomePage = () => {
         </Col>
       ))}
     </Row>
+    {/* <ProductDetails item = {item} getProduct = {getProduct} /> */}
  </>
   )
 }
