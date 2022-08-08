@@ -5,12 +5,15 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Navbar from './Navbar';
 import {useNavigate} from "react-router-dom"
-// import ProductDetails from './ProductDetails';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../actions/action';
 
 
 const HomePage = () => {
+
     const navigate = useNavigate()
     const [item, setItem] = useState([])
+    const dispatch = useDispatch()
     
     const getProduct = async ()=>{
         const responce = await fetch("https://fakestoreapi.com/products")
@@ -37,13 +40,13 @@ const HomePage = () => {
                Rating: {elem.rating.rate}
               </Card.Text>
               <Button variant="light"  onClick={()=>navigate(`/product/${elem.id}`)}>More Details</Button>
-              <Button variant="primary" style={{float:"right"}} >Add to Cart</Button>
+              <Button variant="primary" style={{float:"right"}} onClick={()=>dispatch(addToCart(elem))} >Add to Cart</Button>
             </Card.Body>
           </Card>
         </Col>
       ))}
     </Row>
-    {/* <ProductDetails item = {item} getProduct = {getProduct} /> */}
+  
  </>
   )
 }

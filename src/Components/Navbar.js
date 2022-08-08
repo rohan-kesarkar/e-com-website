@@ -1,10 +1,13 @@
 import { BsCartPlus } from "react-icons/bs";
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
+import { useSelector } from 'react-redux'
 
 
 const Navbar = (props) => {
-    
+    const navigate = useNavigate()
+    const {list} = useSelector((state)=>state.shop)
     const searchProduct = (e)=>{
         const data = props.item.filter((rec)=>rec.title.toLowerCase().startsWith(e.target.value.toLowerCase()))
         props.setItem(data)
@@ -50,7 +53,7 @@ const selectProduct = (e)=>{
   return (
     <>
     <div>
-    <h1>Shopping Mart...<span style={{float : "right", paddingRight:"30px", paddingTop:"1px"}}><BsCartPlus /></span></h1>
+    <h1>Shopping Mart...<span style={{float : "right", paddingRight:"30px", paddingTop:"1px"}}><BsCartPlus onClick={()=>navigate('/cart')} />{list.length} </span></h1>
     
     
     </div>

@@ -37,7 +37,8 @@ const ProductDetails = () => {
       <ListGroup className="list-group-flush">
         <ListGroup.Item>Price: ${post?.price}</ListGroup.Item>
         <ListGroup.Item>Category: {post?.category}</ListGroup.Item>
-        <ListGroup.Item>rating: {post?.rating?.rate}</ListGroup.Item>
+        <ListGroup.Item>Rating: {post?.rating?.rate}</ListGroup.Item>
+        <ListGroup.Item>Only {post?.rating?.count} pieces left</ListGroup.Item>
       </ListGroup>
      
     </Card>
