@@ -6,11 +6,13 @@ import Row from 'react-bootstrap/Row';
 import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import { removeFromCart } from '../actions/action';
+import {useNavigate } from 'react-router-dom'
 
 const Cart = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
     const {list} = useSelector((state)=>state.shop)
-
+   
     // console.log("this is data",list)
     const priceArr = []
    list.map((elem)=>{
@@ -34,7 +36,7 @@ const Cart = () => {
               <Card.Text>
                 Price: ${elem.data.price}
               </Card.Text>
-              <Button variant="secondary" style={{float:"right"}} onClick={()=>dispatch(removeFromCart(elem.id))} >Remove From Cart</Button>{' '}
+              <Button variant="secondary" style={{float:"right"}} onClick={()=>dispatch(removeFromCart(elem.data.id))} >Remove From Cart</Button>{' '}
             </Card.Body>
           </Card>
         </Col>
@@ -46,7 +48,7 @@ const Cart = () => {
         <h2>Total Price : ${sum}</h2>
        
 
-        <Button variant="success" style={{float:"right"}} >Proceed To Buy</Button>{' '}
+        <Button variant="success" style={{float:"right"}} onClick={()=>navigate('/cart/address')} >Checkout</Button>{' '}
         
         </footer>
     </>

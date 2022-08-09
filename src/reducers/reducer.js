@@ -22,12 +22,14 @@ const reducer = (state=initialState, action)=>{
             case "REMOVE_FROM_CART":
             // console.log("payload", action.payload)
             const newList = state.list.filter((elem)=>elem.data.id !== action.id)
-          
+            console.log("action", action.id)
+        
             // console.log("action",id,data)
             return{
                 ...state,
                 list: newList
             }
+            
             default: return state
     }
 }
