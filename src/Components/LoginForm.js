@@ -54,8 +54,9 @@ const validate = (values)=>{
 
 
   return (
+    <div className='container w-25 mt-5'>
     <Form onSubmit={handleSubmit}>
-    <Form.Group className="mb-3 col-lg-2" controlId="formBasicEmail">
+    <Form.Group className="mb-3" controlId="formBasicEmail">
       <Form.Label>Email address</Form.Label>
       <Form.Control type="email" name="email" placeholder="Enter email" value={formValues.email} onChange={handleChange} />
       <p style={{color:"red"}}>{errors.email}</p>
@@ -64,7 +65,7 @@ const validate = (values)=>{
       </Form.Text>
     </Form.Group>
 
-    <Form.Group className="mb-3 col-lg-2" controlId="formBasicPassword">
+    <Form.Group className="mb-3" controlId="formBasicPassword">
       <Form.Label>Password</Form.Label>
       <Form.Control type="password"  name="password" placeholder="Password" value={formValues.password}  onChange={handleChange}/>
     </Form.Group>
@@ -73,6 +74,7 @@ const validate = (values)=>{
       Submit
     </Button>
   </Form>
+  </div>
   )
 }
 
