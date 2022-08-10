@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -29,7 +30,7 @@ const handleSubmit =(e)=>{
 useEffect(()=>{
 if(Object.keys(errors).length === 0 && isSubmit){
     console.log(errors)
-}},[errors])
+}},[errors, isSubmit])
 
 const validate = (values)=>{
     const err = {};
@@ -68,9 +69,6 @@ const validate = (values)=>{
       <Form.Control type="password"  name="password" placeholder="Password" value={formValues.password}  onChange={handleChange}/>
     </Form.Group>
     <p style={{color:"red"}}>{errors.password}</p>
-    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-      <Form.Check type="checkbox" label="Check me out" />
-    </Form.Group>
     <Button variant="primary" type="submit">
       Submit
     </Button>

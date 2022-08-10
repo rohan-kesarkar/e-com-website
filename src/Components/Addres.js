@@ -28,7 +28,7 @@ const Addres = () => {
     useEffect(()=>{
         if(Object.keys(errors).length === 0 && isSubmit){
             console.log(errors)
-    }},[errors])
+    }},[errors,isSubmit])
         
 
     const validate = (values)=>{
@@ -52,6 +52,7 @@ const Addres = () => {
         }
        return err
     }
+    console.log("This is address", formValues)
 
   return (
     <Form  onSubmit={handleSubmit}>

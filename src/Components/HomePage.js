@@ -22,7 +22,7 @@ const HomePage = () => {
    useEffect(()=>{
     getProduct()
    },[])
-   console.log("This side is homepage", item)
+  //  console.log("This side is homepage", item)
   return (
     <>
      <Navbar item={item} setItem={setItem}/>
