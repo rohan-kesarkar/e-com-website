@@ -3,10 +3,16 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+
+import { useDispatch } from "react-redux";
+import { addAddress } from "../actions/action";
 import { useNavigate } from 'react-router-dom';
 
 const Addres = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch();
+
+
 
     const initialValues = {fname:"", contact:"", address:"", address2:"", city:"",state:"", zip:""}
     const [formValues, setFormvalues] = useState(initialValues)
@@ -106,7 +112,7 @@ const Addres = () => {
       <Form.Check type="checkbox" label="Save for later" />
     </Form.Group>
 
-    <Button variant="primary" type="submit">
+    <Button variant="primary" type="submit" onClick={() => dispatch(addAddress(formValues))}>
      Checkout
     </Button>
   </Form>

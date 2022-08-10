@@ -1,5 +1,6 @@
 const initialState = {
-    list : []
+    list : [],
+    address :[]
 
 }
 
@@ -29,6 +30,17 @@ const reducer = (state=initialState, action)=>{
                 ...state,
                 list: newList
             }
+            case "ADD_ADDRESS":
+                const {address} = action.payload
+                return{
+                    ...state,
+                    address:[
+                        ...state.address,
+                        {
+                            address:address
+                        }
+                    ]
+                } 
             
             default: return state
     }
