@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
@@ -12,6 +12,10 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { list } = useSelector((state) => state.shop);
+
+useEffect(()=>{
+  localStorage.setItem('list', JSON.stringify(list))
+},[list])
 
   // console.log("this is data",list)
   var Total = 0;

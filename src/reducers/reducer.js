@@ -1,5 +1,5 @@
 const initialState = {
-    list : [],
+    list : JSON.parse(localStorage.getItem('list')) || [],
     address :[]
 
 }
