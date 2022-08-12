@@ -7,9 +7,9 @@ const baseURL="https://fakestoreapi.com/products"
 
 const ProductDetails = () => {
   const {productId}= useParams()
-    // const prodId = useParams()
+
    
-    console.log("This is our productId",productId)
+    
 
   const [post, setPost] = React.useState([]);
 

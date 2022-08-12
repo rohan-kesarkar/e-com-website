@@ -7,12 +7,19 @@ import Navbar from './Navbar';
 import {useNavigate} from "react-router-dom"
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../actions/action';
+import ReactPaginate from 'react-paginate'; 
+// import Pagination from 'react-bootstrap/Pagination';
 
 
 const HomePage = () => {
 
     const navigate = useNavigate()
     const [item, setItem] = useState([])
+    const [pageNumber, setPageNumber] = useState(1)
+  //  let active = 1
+    const itemPerPage = 6
+    const pageVisited = pageNumber * itemPerPage
+    
     const dispatch = useDispatch()
     
     const getProduct = async ()=>{
@@ -22,12 +29,17 @@ const HomePage = () => {
    useEffect(()=>{
     getProduct()
    },[])
+
+   const pageCount = Math.ceil(item.length/itemPerPage)
+   const changePage = ({selected})=>{
+    setPageNumber(selected)
+   }
   //  console.log("This side is homepage", item)
   return (
     <>
      <Navbar item={item} setItem={setItem}/>
     <Row xs={1} md={3} className="g-4">
-      {item.map((elem) => (
+      {item.slice(pageVisited, pageVisited+itemPerPage).map((elem) => (
         <Col key={elem.id}>
           <Card>
             <Card.Img variant="top" src={elem.image} style={{height:"200px", width:"200px"}} />
@@ -46,6 +58,14 @@ const HomePage = () => {
         </Col>
       ))}
     </Row>
+    <footer  >  
+      <ReactPaginate 
+      previousLabel={'Pre'}
+      nextLabel={'next'}
+      pageCount={pageCount}
+      onClick={changePage}
+      />
+    </footer>
   
  </>
   )

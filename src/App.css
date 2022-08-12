@@ -2,6 +2,23 @@
   text-align: center;
 }
 
+ul {
+  display: flex!important;
+ 
+}
+li  {
+  padding: 10px;
+  margin: 10px;
+  text-decoration: none;
+  list-style: none;
+  cursor: pointer;
+  background-color: #61dafb;
+}
+/* .footer {
+  display: flex;
+} */
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
